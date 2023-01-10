@@ -1,0 +1,387 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage{amsmath, amsfonts, amssymb, array, amsthm}
+\usepackage[tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in]{geometry}
+\usepackage{sectsty} % control section /header style
+\usepackage{fancyhdr}
+\usepackage{hyperref} 
+\usepackage{mathtools} %for prescript function in permutation command
+\usepackage{gensymb} %for the \degree command
+\setlength{\jot}{5mm} %Line Spacing in the gather environment
+
+
+\usepackage{xcolor}
+% Define colours
+\definecolor{blu2}{HTML}{206B99}
+\definecolor{plumb}{HTML}{A16E83}
+\definecolor{pink1}{HTML}{E18AAA}
+\definecolor{pink2}{HTML}{DA7B93}
+\definecolor{gren}{HTML}{B4D3B2}
+%%%%%%%%%%
+\definecolor{blu1}{HTML}{5DA2D5}
+\definecolor{lightblu}{HTML}{90CCF4}
+\definecolor{red1}{HTML}{F78888} %#ecb4b4
+\definecolor{red2}{HTML}{EDB5BF}
+\definecolor{lilacc}{HTML}{86B3D1}
+\definecolor{gren1}{HTML}{b4ecb4}
+\definecolor{gren2}{HTML}{73dc73}
+%%%%%%%%%%
+\definecolor{navi}{HTML}{4E576E}
+\definecolor{blumb}{HTML}{71475B}
+%%%%%%%%%%
+\hypersetup{colorlinks=true, linkcolor=blumb, urlcolor=blumb, filecolor=blu2, citecolor=blumb}
+
+% Title and Subtitle
+\newcommand{\Title}[1]{\begin{center}\textcolor{navi}{\begin{Huge}#1\vspace{1pt}\end{Huge}}\end{center}}
+\newcommand{\SubTitle}[1]{\begin{center}\textcolor{navi}{#1\vspace{1pt}}\end{center}}
+\newcommand{\NB}[1]{\textcolor{blumb}{\textbf{NB: }}}
+% Other Commands
+%\newcommand\Perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+%\newcommand\Comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}
+
+% Color of Headings
+\subsectionfont{\color{navi}}
+\sectionfont{\color{blumb}}
+\subsubsectionfont{\color{blumb}} 
+
+\title{L.C. Maths}
+\author{Oisín Peppard}
+\date{May 2022}
+
+
+\begin{document}
+
+\Title{L.C. Maths}
+\SubTitle{Oisín Peppard}
+\SubTitle{May 2022}
+\hrulefill
+
+This is not a complete list of everything you need to know (for this you should consult the \href{https://www.curriculumonline.ie/getmedia/f6f2e822-2b0c-461e-bcd4-dfcde6decc0c/SCSEC25_Maths_syllabus_examination-2015_English.pdf}{SEC maths syllabus}, which is worth doing - \textit{make sure you're not looking at the foundation section}), rather this is a brief list of some of the {\emph{important and easy to forget}} tricks, formulae and proofs that you should make sure to go over. That being said, some of these are quite obscure and very rarely come up, everything has at some point though!
+
+\section{Paper One}
+\subsection{Algebra} 
+\begin{itemize}
+    \item We all know the difference of two squares , but don't forget that there is a difference of two \textit{cubes} and even a \textit{sum} of two cubes. 
+        \begin{equation}
+            (a+b)^3 = (a+b)(a^2-ab+b^2)
+        \end{equation}
+        \begin{equation}
+            (a-b)^3 = (a-b)(a^2+ab+b^2)
+        \end{equation}
+    \item \textit{Never} forget the cross term: $(a+b)^2=a^2 + 2ab + b^2 $ and \textit{not} just $a^2 + b^2$
+    \item Binomial expansion: $(x+y)^n = \sum_{i=0}^n \Comb{n}{i} \cdot x^{n-i} y^i$ 
+    \item Get roots of a cubic polynomial by first guessing one - (don't guess any number, but a factor of the constant at the end of the cubic. i.e. if we have $3x^3 + 4x^2 + 5x + 7$ then our only guesses for the first root are: $-7,-1,0,1,7$), - then using the \textbf{root factor theorem}: $x=k$ is a root $\iff$ $(x-k)$ is a factor. Do long division with this factor then solve the remaining quadratic
+    \item Remainder theorem: if we divide by a factor of a polynomial, the remainder must be equal to zero
+    \item Inequalities behave the same as equations until we change sign of both sides, then the inequality changes direction
+    \item If we have: $|x| = 2x-3$, then the next line splits to \textit{both} $x=-2x+3$ and $x= 2x-3$. There must be two solutions
+    \item Get comfortable with rules of logs and rules of indices
+    \item \textcolor{gren2}{Proof} that $\sqrt{2}$ is irrational.
+        
+        The method for this is a proof by contradiction, this means we assume the statement is true and follow it logically until we reach something that doesn't make sense, which can only mean our initial assumption was faulty.
+        
+        \rule{\linewidth}{0.1mm}
+        If $\sqrt{2}$ is rational then it could be written \textit{in its simplest form} as 
+            \begin{equation} \label{eq:triple}
+                \sqrt{2}=\frac{a}{b} \longrightarrow 2=\frac{a^2}{b^2} \longrightarrow a^2 = 2b^2
+            \end{equation}
+        The next bit is subtle, but the above line means that $a^2$ is even, and therefore $a$ is even. This is because an odd number squared must always be odd. We can therefore write $a=2k$ for some other number k. Then we have
+            \begin{equation}
+                2=\frac{(2k)^2}{b^2} = \frac{4k^2}{b^2} \longrightarrow b^2 = 2k^2, 
+            \end{equation}
+        meaning via the same argument as before, $b$ is also even and so we have a contradiction. Remember that we said $\frac{a}{b}$ was $\sqrt{2}$ in its \textit{simplest} form, this cannot be the case if both $a$ and $b$ are even numbers.
+        
+    \item \textcolor{gren2}{Proof} by induction (three examples + two formulae that have come up). Idea is to prove that if statement is true for some number $k$, then it must also be true for the next number $k+1$. Then prove for $k=1!$ and it will follow for $k=2,3,...,n$, i.e. every natural number, You need to explain this in a conclusion each time you do this.
+        \begin{enumerate}
+%        
+            \item \textcolor{gren2}{Prove} that $7|8^{n}-1$ for all $n \in \mathbb{N}$ \\
+            \rule{\linewidth}{0.1mm}
+                First show that it is true for $n=1$:
+                \begin{equation}
+                    8^1 -1 = 7 \text{ is divisible by } 7
+                \end{equation}
+                Now we say \textit{if} the statement holds for $n=k$ for some number $k$, i.e.
+                \begin{equation}
+                    8^k -1 \text{ is divisible by } 7
+                \end{equation}
+                Then does it hold for $n=k+1$?
+                    \begin{align}
+                       &= 8^{k+1} -1 \\
+                       &= 8\cdot 8^k -1 \qquad \text{\textcolor{blumb}{\textit{rules of indices}}} \\
+                       &= (7+1)\cdot 8^k-1 \\
+                       &= 7\cdot 8^k + [8^k - 1]
+                    \end{align}
+                Now the first term is clearly divisible by 7 since it has a factor of 7 out the front, the term in square brackets are divisible by 7 as long as our assumption holds. So if the proposition holds for $n=1$, then it holds for $n=2$. And if it holds for $n=2$, then it holds for $n=3,4,...,\infty$ \quad \qedsymbol
+%            
+            \item \textcolor{gren2}{Prove} that the sum of the first $n$ natural numbers is: $\cfrac{n(n+1)}{2}$ \\
+            \rule{\linewidth}{0.1mm}
+                First show that it is true for $n=1$:
+                \begin{equation}
+                   \cfrac{1(1+1)}{2} = 1. \text{ Which is the sum of the first 1 natural numbers}
+                \end{equation}    
+                 Now we say \textit{if} the statement holds for $n=k$ for some number $k$, i.e.
+                \begin{equation}
+                   \cfrac{k(k+1)}{2} = 1+2+3+...+k
+                \end{equation}
+                Then does it hold for $n=k+1$?
+                    \begin{gather}
+                        \cfrac{[k+1]([k+1]+1)}{2} \\
+                        = \cfrac{k^2+3k+2}{2} \\
+                        = \cfrac{k^2+k+2k+2}{2} \\
+                        = \cfrac{k^2+k}{2} + \cfrac{2k+2}{2} \\
+                        = \cfrac{k(k+1)}{2} + (k+1)
+                    \end{gather}
+                Which is just our assumption plus $k+1$. Therefore if our assumption holds, the final line above is equal to 
+                \begin{equation}
+                    1+2+3+...+k+(k+1)
+                \end{equation}
+                So if the proposition holds for $n=1$, then it holds for $n=2$. And if it holds for $n=2$, then it holds for $n=3,4,...,\infty$ \quad \qedsymbol
+%           
+            \item \textcolor{gren2}{Prove} that $2^n > n^2$ for all $n\geq 4{}$. \\
+            \rule{\linewidth}{0.1mm}
+                First show that it is true for $n=1$:
+                \begin{equation}
+                    2^1 \geq (1)^2 \qquad \checkmark
+                \end{equation}
+                Now we say \textit{if} the statement holds for $n=k$ for some number $k$, i.e.
+                \begin{equation}
+                   2^k > k^2
+                \end{equation}
+                Then does it hold for $n=k+1$?
+                \begin{equation}
+                    2^{k+1} \stackrel{?}{\geq} (k+1)^2
+                \end{equation}
+                Since $2^{k+1}=2\cdot 2^k$, using the assumption we can say
+                \begin{equation}
+                    2^{k+1} \geq 2k^2.
+                \end{equation}
+                If the right side of the above inequality is greater than $(k+1)^2$ then we are done. This is based on the idea that if $\textcolor{lightblu}{A} > \textcolor{gren1}{B} \text{ and } \textcolor{gren1}{B} > \textcolor{red1}{C} \rightarrow \textcolor{blumb}{A} > \textcolor{red1}{C}$ 
+                \begin{gather}
+                    2k^2 \stackrel{?}{\geq} (k+1)^2 \\
+                    2k^2 {\geq} k^2+2k+1 \\
+                    k^2-2k-1 {\geq} 0 \\
+                    (k-1)^2 -2 {\geq} 0 \\
+                \end{gather}
+                which is definitely true for $k \geq 4$ \qedsymbol
+            \item \textcolor{gren2}{Derive} De Moivre theorem by induction  \textcolor{blumb}{came up last in 2018} \textcolor{gren2}{WIP}
+            \item \textcolor{gren2}{Derive} Finite geometric series by induction \textcolor{blumb}{came up last in 2012} \textcolor{gren2}{WIP}
+        \end{enumerate}
+\end{itemize} 
+
+
+\subsection{Calculus}
+\begin{itemize}
+    \item The whole point of a derivative is to give the \textit{rate of change} of a function. If $y=f(x)$ is graphed then this corresponds to the \textit{slope of the tangent at x}
+    \item You must know how to differentiate from \textit{first principles}, i.e. apply the formula
+        \begin{equation}
+            \frac{dy}{dx} = \frac{d}{dx}f(x)= f'(x)=  \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}
+        \end{equation}
+    \item A turning point/local max./local min. comes from letting the derivative equal zero and solving for $x$ or $t$ or whatever variable we have a function of. Recognise that this is what to do any time you see a question involving \textit{greatest, least, fastest, closest, smallest} etc. Go further with the second derivative test. If $f''(x)>0$ then $x$ gives a minimum etc. Point of inflection if $f''(x)=0$, in this case $f'(x)$ may or may not be zero
+    \item The whole point of a definite integral is to sum together infinitely many values of $f(x)$ in a range from $a \to b$.  If $y=f(x)$ is graphed then this corresponds to the \textit{area under the curve between $a$ and $b$}
+        \begin{equation}
+            \int_a^b f(x) dx = F(b)-F(a), \text{ where }F'(x) = f(x)
+        \end{equation}
+    \item If there are no limits, it is an indefinite integral, and needs an \textit{integral constant}
+    \item Average value is given by 
+        \begin{equation}
+            f_{avg}(x)=\frac{1}{b-a} \int_a^b f(x) dx
+        \end{equation}
+\end{itemize}
+\subsection{Complex Numbers}
+
+\begin{itemize}
+    \item To divide two complex numbers, you need to multiply top and bottom by the \textit{conjugate} of the \textit{bottom} number
+    \item Be very careful to recognise a question about complex \textit{powers} and complex \textit{roots}. Both require De Moivre's theorem but the latter needs the extra step with \textit{general} polar form:
+    \begin{equation}
+        z=r [\cos(\theta+2n\pi)+i\sin(\theta+2n\pi)]
+    \end{equation}
+    If we are taking for example, the fifth root, there will be five solutions. These are obtained by using five values for n when applying De Moivre. Start with $n=0$
+\end{itemize}
+
+\subsection{Sequences and Series}
+    
+    \begin{itemize}
+        \item To prove or show that some terms are in \textbf{arithmetic} sequence, show that the \textbf{difference} between each pair of consecutive terms is the same. To show this for \textit{the whole} sequence, show that $T_n - T_{n-1}$ is a constant. This is the common \textbf{difference} $d$
+        \item To prove or show that some terms are in \textbf{geometric} sequence, show that the \textbf{ratio} between each pair of consecutive terms is the same. To show this for \textit{the whole} sequence, show that $\frac{T_n}  {T_{n-1}}$ is a constant. This is the common \textbf{ratio} $d$
+        \item \textcolor{gren2}{Derive} the sum to infinity of a geometric series: 
+        \begin{gather}
+            S_\infty = \lim_{N\to \infty} \sum_{i=0}^N\cfrac{a(1-r^n)}{1-r} \\
+            \lim_{N\to \infty} r^n = 0 \iff |r| <1\\
+            \therefore  S_\infty = \cfrac{a(1-(0))}{1-r} = \cfrac{a}{1-r}
+        \end{gather}
+        
+    \end{itemize}    
+
+
+\subsection{Financial Maths}
+    \begin{itemize}
+        \item Financial maths all hinges on the fact that money today is worth more than money tomorrow, since it can earn interest over time. We have future value of a sum of money
+            \begin{equation}
+                F=P(1+i)^t
+            \end{equation}
+            and the present value of a future sum
+            \begin{equation}
+                P=\frac{F}{(1+i)^t}
+            \end{equation}
+            \item Many of these questions involve a series of payments/savings/time series which are added together and will differ by a factor of $(1+i)$ from a month or a year of earning interest. For this reason we need to be familiar with the geometric sum formula
+            \item When writing out series be very careful about whether the first term has a factor of $(1+i)$ or not. i.e. I save €50 at the start of the month for 12 months, what will I have at the end of 12 months? The sum series will be something like:
+            \begin{equation}
+                50(1+i)+...+50(1+i)^{12}
+            \end{equation}
+            Whereas if I saved at the \textit{end} of each month, what I have after 12 months would be:
+            \begin{equation}
+                50+...+50(1+i)^{11}
+            \end{equation}
+            \NB{} both have 12 terms in the series and the same common ratio $r$, the only difference is the first term $a$
+        \item Monthly interest rate equivalent to an AER is given by
+        \begin{equation}
+            (1+m)=(1+i)^{1/12}
+        \end{equation}
+        \item \textcolor{gren2}{Derive} the amortisation formula
+        This formula is basically just a rearrangement of the geometric series formula. It starts with the sum of future values of some equal repayment $A$, which we let equal the present value $P$ of some other sum of money, which could be a loan or something else. This one gets very messy with nested fractions.
+        \rule{\linewidth}{0.1mm}
+        \begin{gather}
+            P=\frac{A}{1+i}+...+\frac{A}{(1+i)^t} \\
+            =\cfrac{\cfrac{A}{1+i}\cdot[1-\cfrac{1}{(1+i)^n}]}{1-\cfrac{1}{1+i}}\\
+            = \cfrac{A\cdot[1-\cfrac{1}{(1+i)^n}]}{(1+i)-1} \\
+            = \cfrac{A\cdot[1-\cfrac{1}{1+i}^n]}{i} 
+        \end{gather}
+        Where we used the geometric formula and then multiplied top and bottom by $1+i$. Now rearranging for A,
+        \begin{gather}
+            A = \cfrac{i \cdot P}{[1-\cfrac{1}{(1+i)^n}]}\\
+            = \cfrac{i \cdot P \cdot (1+i)^n}{[(1+i)^n-1]}
+        \end{gather} 
+    \end{itemize}
+
+
+
+\section{Paper Two}
+\subsection{Area \& Volume}
+    \begin{itemize}
+        \item \textit{Not really much to say here}
+    \end{itemize}
+\subsection{Trigonometry}
+    \begin{itemize}
+        \item Triangles are either right angled, or they're not! In the former case we use Pythagoras or
+            if we want to find an unknown side, or $\sin{\theta} = \frac{opp}{hyp}$ etc. if we want to find an angle, or we know an angle and are using it to find a side.
+        \item 3-d trig problems are tricky, look for the implied right angles (i.e. a pole sticking out of the ground) and draw that face on. You're only looking for one length at a time, so figure out which one it is and then draw on its own each triangle that it belongs to
+        \item Know what $a\cos{bx}+c$ or $a\sin{bx}+c$ look like, what does changing $a$, $b$, and $c$ do? Have an idea of what the $\tan{\theta}$ graph looks like
+        \item Be \textbf{very} careful when you need to take an inverse trig function. i.e. you arrive at $\cos(x) = \sqrt{2}$ and need to take $\arccos{\sqrt{2}}$. Each of these have \textbf{infinitely many values} - two within the $[0,2\pi]$ range and infinitely many more by adding integer multiples of $2\pi$. Solve your equation with \textit{all} the values then find which ones are relevant based on the constraint given in the question (if there is one)
+        \item $\sin{A} = \sin{\pi-A}$, $\cos{A} = \cos{(2\pi-A)}$, $\tan A = \tan{(\pi+A)}$
+        \item $\sin{A}=-\sin{(2\pi-A)}$, $\cos{A} = -\cos{-A}$, $\tan A = -\tan{-A}$
+        \item $\sin{A}=\cos{(\frac{\pi}{2}-A)}$
+        \item prove theorems 11,12,13 (see appendix) \textcolor{gren2}{WIP!}
+        \item derive the trigonometric formulae 1, 2, 3, 4, 5, 6, 7, 9 (see appendix) \textcolor{gren2}{WIP!}
+        \item apply the trigonometric formulae 1-24 (see appendix)
+    \end{itemize}
+\subsection{Geometry}
+    \begin{itemize}
+        \item Remember your transformations: rotation, translation, axial symmetry (reflection), symmetry through a point
+        \item Understand enlargement by a factor $k$ where $k\in (0,1) $ or $k>1$
+        \item There are 22 constructions (see \href{http://gofree.indigo.ie/~hallinan/ProjectMaths/LC_Geometry_Strand2/Leaving_Cert_Geometry_summary_constructions.htm}{this web page}). Most of them are very easy, very important ones to remember are the concurrencies of the triangle: \textbf{Circumcentre}, \textbf{Incentre}, \textbf{Orthocentre}, and \textbf{Centroid}. These are often examined in a coordinate geometry question where we must know exactly which lines in a triangle intersect and how they relate to midpoints etc.
+        \item prove theorems 11, 12 and 13 \textcolor{gren2}{WIP!}
+        \item Must be able to Construct Root 2 and Root 3
+    \end{itemize}
+\subsection{Coordinate Geometry and the circle \textcolor{gren2}{WIP!}} 
+These can be taught and thought of separately, but they very often go hand in hand
+    \begin{itemize}
+        \item Generic coord geometry formulae in the log tables. Don't forget the perpendicular distance from a point to a line one, we need this a lot
+        \item If we want an equation of a \textbf{line} we need a \textit{slope} and a \textit{point}
+        \item $y$ - intercept is given by setting $x$ to zero, $x$ - intercept is given by setting $y$ to zero
+        \item Intersection of two lines is a simultaneous equation of them
+        \item If we want an equation of a \textbf{circle} we have: 
+        \begin{equation}
+            x^2 +y^2 +2gx+2fy+c=0,
+        \end{equation}
+        so we have three unknowns $g,f, \text{and} c$. Usually the question will give three pieces of information which we can make equations of (using the line formulae, or plugging in a point we know or something)
+        \item Tircles are touching if the distance between their centres is the sum or difference of their radii
+        \item Tangents are perpendicular to the radius at that point, only touch the circle at one point
+    \end{itemize}
+\subsection{Probability}
+
+\begin{itemize}
+     
+    \item A probability is a likelihood, when we know the list of outcomes (the sample space), and we know which of those outcomes is \textit{favourable} i.e.          corresponds to the event $E$ in question, then a probability is: 
+            \begin{equation}
+                P(E) = \frac{\text{num of \textit{favourable} outcomes}}{\text{num of \textit{possible} outcomes}}
+            \end{equation}
+            \item $P(A | B)$ or the probability of $A$ \textit{given} $B$, means if we know for certain that $B$ has occurred, what's the probability that $A$ has also occurred?
+           
+            \textcolor{blumb}{Example:}
+            I draw a card from a deck, what's the probability that it's an even spade \textit{given} that it is black? $P(\text{even spade}|\text{black})$. We need to rearrange the above formula for $P(E)$ so that the \textit{possible} outcomes becomes just $P(B)$ and the favourable outcomes are the ones that represent $A$ and $B$: $P(A \cap B$)
+            \begin{equation}
+                P(A|B)=\frac{P(A\cap B)}{P(B)}
+            \end{equation}
+            or in our example case: 
+            \begin{equation}
+                P(\text{even spade}|\text{black})=\frac{5}{26}
+            \end{equation}
+            \NB{} this only makes sense if the events are not \textit{mutually exclusive}, i.e. $P(A\cap B) \neq 0$
+            \NB{} the curriculum specifically says to appreciate and explore the idea that $P(A | B) \neq P(B | A)$
+    \item Events are independent if one of them occurring doesn't affect the other
+    \item Addition Rule: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+    \item Multiplication Rule (Independent Events): $P(A \cup B) = P(A) \times P(B)$ \textcolor{blumb}{\textbf{NB}} Events are independent if one of them occurring doesn't affect the other
+    \item Multiplication Rule (General Case): $P(A \cap B) = P(A) \times P(B | A)$
+    \item Counting is the question of how many ways you can arrange things, or combinatorics. Remember the \href{https://en.wikipedia.org/wiki/Rule_of_product}{fundamental principle of counting}, and what is meant by a factorial ($5!=5\times 4 \times ... \times 1$). 
+    
+    Remember that a \textit{permutation} is how many ways I can arrange $r$ objects from $n$ choices and the \textit{order does matter}, i.e. how many ways can I fill my shelf if I have seven books and space for three? We would say $\Perm{7}{3}$. We can have the same three books in different orders
+        \begin{equation}
+        ^{n}P_{r} = \frac{n!}{(n-r)!}
+        \end{equation}
+        
+    A \textit{combination} is how many ways I can choose $r$ objects from $n$ choices and \textit{order does not matter}, i.e. How many different teams of 11 can I make from my class of 30? This is $\Comb{30}{11}$. Note that the order doesn't matter, the team is the same no matter what way you list the members.
+        \begin{equation}
+        ^{n}C_{r} = \frac{n!}{(n-r)!r!}
+        \end{equation}
+    There are buttons on your calculator for both of these
+    \item A Bernoulli trial is an event where there are only two outcomes, which we can call success or failure. $P(S)=1-P(F)$
+\end{itemize}
+    
+\subsection{Statistics}
+    \begin{itemize}
+        \item Mean, mode and median are measures of \textit{central tendency}
+        \item Standard deviation is a measure of \textit{distribution}, it's the average difference between each data point and the mean
+        \item Inferential statistics is when we use a \textit{sample statistic} to infer something about a \textit{population parameter}. We use $\mu$ and $\sigma$ for population \textit{parameters}, while we use $\Bar{x}$ and $\sigma_{\Bar{x}}$ for sample \textit{statistics}.
+        \item Increased confidence means a wider confidence interval (think of increasing the 1.96 times the standard error that we use in 95\% interval
+    \end{itemize}
+
+
+\section{Trig theorems}
+It will be assumed that these formulae are established in the order listed here. In deriving any formula, use may be made of formulae that precede it.
+
+
+\begin{enumerate}
+    \item $\cos^2{A} + \sin^2{A} = 1$
+    \item Sine rule: \quad $\cfrac{a}{\sin{A}}=\cfrac{b}{\sin{B}}=\cfrac{c}{\sin{C}}$
+    \item Cosine rule: \quad $c^2=a^2 +b^2 -2ab\cos{\theta}$ \
+        \begin{itemize}
+            \item \NB{} Pythagoras' is just this with $\theta=90 \degree$
+        \end{itemize}
+    \item $\cos{(A-B)} = \cos{A}\cos{B} + \sin{A}\sin{B}$
+    \item $\cos{(A+B)} = \cos{A}\cos{B} - \sin{A}\sin{B}$
+    \item $\cos{2A} = \cos^2{A} - \sin^2{A}$
+    \item $\sin{(A+B)} = \sin{A}\cos{B} + \cos{A}\sin{B}$
+    \item $\sin{(A-B)} = \sin{A}\cos{B} - \cos{A}\sin{B}$
+    \item $\tan{(A+B)} = \cfrac{\tan A + \tan B}{1-\tan A \tan B}$
+    \item $\tan{(A-B)} = \cfrac{\tan A - \tan B}{1+\tan A \tan B}$
+    \item $\sin{2A} = 2\sin{A}\cos A$
+    \item $\sin{2A} = \cfrac{2\tan A}{1+\tan^2A}$
+    \item $\cos{2A} = \cfrac{1-\tan^2 A}{1+\tan^2A}$
+    \item $\tan{2A} = \cfrac{2\tan A}{1-\tan^2A}$
+    \item $\cos^2 A = \cfrac{1+\cos2A}{2}$
+    \item $\sin^2 A = \cfrac{1-\cos2A}{2}$
+    \item $2\cos A\cos B = \cos(A+B)+\cos(A-B)$
+    \item $2\sin A\cos B = \sin(A+B)+\sin(A-B)$
+    \item $2\sin A\sin B = \cos(A-B)-\cos(A+B)$
+    \item $2\cos A\sin B = \sin(A+B)-\sin(A-B)$
+    \item $\cos A + \cos B = 2\cos\cfrac{A+B}{2} \cos\cfrac{A-B}{2}$
+    \item $\cos A - \cos B = -2\sin{\cfrac{A+B}{2}} \sin{\cfrac{A-B}{2}}$
+    \item $\sin A + \sin B = 2\sin\cfrac{A+B}{2} \cos\cfrac{A-B}{2}$
+    \item $\sin A - \sin B = 2\cos\cfrac{A+B}{2} \sin\cfrac{A-B}{2}$
+    
+\end{enumerate}
+\end{document}
+    

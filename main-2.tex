@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[A4, portrait, margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\DeclareMathOperator\cis{cis}
+\DeclareMathOperator\Arg{Arg}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{1em}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{myred}{rgb}{1, 1, 1}
+\usepackage{empheq}
+
+\newlength\mytemplen
+\newsavebox\mytempbox
+
+\makeatletter
+\newcommand\mybluebox{%
+    \@ifnextchar[%]
+       {\@mybluebox}%
+       {\@mybluebox[0pt]}}
+
+\def\@mybluebox[#1]{%
+    \@ifnextchar[%]
+       {\@@mybluebox[#1]}%
+       {\@@mybluebox[#1][0pt]}}
+
+\def\@@mybluebox[#1][#2]#3{
+    \sbox\mytempbox{#3}%
+    \mytemplen\ht\mytempbox
+    \advance\mytemplen #1\relax
+    \ht\mytempbox\mytemplen
+    \mytemplen\dp\mytempbox
+    \advance\mytemplen #2\relax
+    \dp\mytempbox\mytemplen
+    \colorbox{myred}{\hspace{1em}\usebox{\mytempbox}\hspace{1em}}}
+
+
+\title{Complex Analysis}
+\author{Oisín Peppard}
+
+\begin{document}
+
+\maketitle
+
+\textcolor{Gray}{\subsection*{Lecture 1 - 8 Sep}}
+
+\section{Introduction and review}
+
+\begin{equation}
+    \log{z} = \ln{|z|} + i \arg{z}
+\end{equation}
+\begin{equation}
+    \arg{z} = \Arg{z} + 2\pi i \mathbb{Z}
+\end{equation}
+
+\begin{flushleft}
+ multiplication operator is a \textbf{bifunctor}, a map between elements provides a map between sets. 
+
+\par A \textbf{Branch} of a multi valued function is any $f$ s.t. 
+
+
+\begin{itemize}
+    \item $f$ is continuous
+    \item $f(z) \in F(z) $
+    \item $f(z) : z \in $ some region $D$
+\end{itemize}
+
+Example, a branch of $f(z)$ over $D = \mathbb{C} \setminus \mathbb{R}_{<0}$ This includes a cut of the negative real numbers. To account for discontinuity at $\pm{\pi}$
+
+\par
+Holomorphic functions are those that infinitely differentiable on a given domain.
+\par
+An I Isometric map preserves distance and angle, while a conformal map preserves angle alone.
+\end{flushleft}
+
+\textcolor{gray}{\subsection*{Lecture 2 - 12 Sep}}
+\section{Conformal Maps}
+\begin{flushleft}
+To discuss angles between intersecting arcs, we first define an \textbf{arc} as a path, or a trajectory parameterised by time. These may be closed, self intersecting and even have corners or cusps. They cannot however be discontinuous.
+
+\begin{equation}
+\textrm{Arc } \gamma:[a,b] \to \mathbb{C}
+\end{equation}
+
+An arc is closed if $\gamma (a) = \gamma (b) $
+\par
+Reparameterisation is via a homeomorphism $phi$ between $[a,b] \to [\alpha, \beta]$. In this case we have:
+
+\begin{equation}
+    \phi \circ \gamma : [\alpha,\beta] \to \mathbb{C}
+\end{equation}
+A \textbf{curve} is an equivalence class of arcs modulo reparameterisation. \par An arc is \textbf{regular} if it is of class 1 i.e. if it is differentiable. \par Arcs are equivalent at a point $a$ if $\gamma_{1} (a) = \gamma_{2}(a)$ and $\gamma_1 ' (a) = \gamma_2 '(a)$
+
+A tangent vector at $z_0$ is an equivalence class of arcs $\gamma(a) = z_0$ s.t. :
+\begin{equation}
+\gamma_1 \sim \gamma_2 \iff |\gamma_1 (t) - \gamma_2 (t)| = o(t) ; t\to 0 
+\end{equation}
+
+Here, $|\gamma_1 (t) - \gamma_2 (t)|$ is a metric, and can be looked at for any submanifold or non - Euclidean space. $f(t) = o(t);t\to 0$ means $\frac{|f(t)|}{t} \to 0$. Similar to $f(t) = O(g(t));t\to 0 $ if $ \frac{|f(t)|}{g(t})$ is bounded.
+\par\begin{equation}
+    f: \Omega \to \Omega' \textrm{ open in $\mathbb{C}$}
+\end{equation}
+$f$ is R-Differentiable at $z_0$ if $\exists$ a linear transformation $L :\mathbb{R}^n \to \mathbb{R}^m$ s.t.
+\begin{equation}
+    f(z) = f(z_0) + L(z-z_0) + O_{z\to z_0}(|z-z_0|)
+\end{equation}
+\par \textbf{Lemma} if $L$ is linear and $O(|z-Z_0|)$, then $L = 0$
+\par if $f$ is R-Differentiable, $L = df_{z_0} : \mathbb{R}^n \to \mathbb{R}^m $ is the differential of f at $z_0$
+
+\begin{equation}
+    df = \sum^n{f_{x_j} dx_j} \iff df(\xi) = \sum^n{f_{x_j} dx_j}(\xi) = \sum^n {f_{x_j}}\xi_j \textrm{ with } \xi = (\xi_1,...,\xi_n)
+\end{equation}
+
+\begin{empheq}[box={\mybluebox[5pt]}]{equation}
+\textrm{In} \mathbb{C}, df = f_z dz + f_{\bar{z}} d\bar{z} \textrm{and} dz(\xi) = \xi, d_{\bar{z}}(\xi) = \bar{\xi} 
+\end{empheq}
+
+\par if f is $\mathbb{C}$-Differentiable at  $z_0$, it is R-Differentiable and $f_{z_0} = 0$. This happens $\iff f$ is R-diff and $df$ is $\mathbb{C}$-Linear.
+
+\section{Linear complex structure}
+\par for an arbitrary vector space $V$ over a field $\mathbb{R}$, we may have a complex structure that is $\mathbb{R}$-linear. This is given by a linear transformation $J:V \to V$ where $J^2 = -\mathbb{1}$. Complex Structure is an automorphism of the vector space, equipping a real $V$ with this structure allows us creation of a complex vector space, that is a vector space over a field $\mathbb{C}$.
+\par \textbf{Note} that every complex vector space may be equipped with a complex structure, but there is no such canonical structure. The fundamental \textit{example} of a complex structure is $\mathbb{C}^n \textrm{on the space} \mathbb{R}^{2n}$. This idea is useful in complex geometry and the definition of almost-complex and complex manifolds.
+
+\par Some properties of this structure (to be proven as an exercise):
+\begin{itemize}
+    \item If $V$ is a $\mathbb{C}$ Vector space, then $J(v) = {iv: v \in V}$ is a complex structure. (Alternative realisation of $J$
+    \item If $J$ is a complex structure on $V$ then $V$ becomes a $\mathbb{c}$ vector space with scalar multiplication defined as $(x + iy)v = xv +yJ(v)$
+\end{itemize}
+
+
+
+\end{flushleft}
+
+\end{document}

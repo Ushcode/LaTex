@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{multicol}
+\usepackage{parskip}
+\setlength{\parindent}{4em}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}% use newest version
+\usepackage{tikz, tikz-3dplot,  circuitikz}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{xstring}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{dirtytalk}
+\usepackage{units}
+
+\definecolor{blu1}{HTML}{5DA2D5}
+\definecolor{blu2}{HTML}{206B99}
+\definecolor{lightblu}{HTML}{90CCF4}
+\definecolor{red1}{HTML}{F78888} % <- darker 
+\definecolor{red2}{HTML}{EDB5BF}  % sim to #ecb4b4, triadic colour of grn1
+\definecolor{plumb}{HTML}{A16E83}
+\definecolor{lilacc}{HTML}{86B3D1}
+\definecolor{gren1}{HTML}{b4ecb4}
+
+
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+  axis lines=middle,
+  samples=100,
+  ymax=3
+]
+\addplot[blu2,domain=0.001:4] {log10(x)};
+\addplot[plumb!70!gray,domain=-2:1] {log10(1-x)};
+\node[pin={90:$\log x$},inner sep=0pt] 
+  at (axis cs:{3,log10(3.5)}) {};
+\node[pin={0:$\log(1-x)$},inner sep=0pt] 
+  at (axis cs:{0.9,log10(0.1}) {};
+\node[pin={135:max for $D$},inner sep=0pt]
+  at (axis cs{0,0}) {};
+\node[pin={100:$x=1$},inner sep=0pt]
+  at (axis cs:{1,0}) {};
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
